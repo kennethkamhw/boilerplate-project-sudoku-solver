@@ -3,12 +3,12 @@
 const SudokuSolver = require("../controllers/sudoku-solver.js");
 
 module.exports = function(app) {
-    let solver = new SudokuSolver();
-
     app.route("/api/check").post((req, res) => {});
 
     app.route("/api/solve").post((req, res) => {
         let puzzle = req.body.puzzle;
+
+        let solver = new SudokuSolver();
 
         // Check if input empty
         if (!puzzle) {
@@ -23,7 +23,6 @@ module.exports = function(app) {
             return;
         }
 
-      solver.convertToMatrix(puzzle);
         let solution = solver.solve(puzzle);
         if (!solution) {
             res.json({ error: "Puzzle cannot be solved" });
