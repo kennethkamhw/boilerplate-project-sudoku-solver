@@ -120,10 +120,10 @@ class SudokuSolver {
                                 this.checkRowPlacement(puzzleMatrix, p, q, n) &
                                 this.checkRegionPlacement(puzzleMatrix, p, q, n)
                             ) {
-                                puzzleMatrix[i][j] = n;
+                                puzzleMatrix[p][q] = n;
                                 solveStep();
                             } else {
-                                puzzleMatrix[i][j] = ".";
+                                puzzleMatrix[p][q] = ".";
                             }
                             return;
                         }
