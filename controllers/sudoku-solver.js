@@ -18,6 +18,21 @@ class SudokuSolver {
         return { isValid: true, err: null };
     }
 
+    convertToMatrix(puzzleString) {
+      let rows = [];
+      for (let i=0; i<9; i++) {
+        let row = []
+        for (let j=0; j<9; j++) {
+          let cell = puzzleString[i*9+j];
+          console.log(cell);
+          row.push(cell);
+        }
+        rows.push(row);
+      }
+      console.log(rows);
+      return rows;
+    }
+
     checkRowPlacement(puzzleString, row, column, value) {}
 
     checkColPlacement(puzzleString, row, column, value) {}

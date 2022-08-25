@@ -23,6 +23,7 @@ module.exports = function(app) {
             return;
         }
 
+      solver.convertToMatrix(puzzle);
         let solution = solver.solve(puzzle);
         if (!solution) {
             res.json({ error: "Puzzle cannot be solved" });
