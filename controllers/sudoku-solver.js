@@ -1,24 +1,33 @@
 class SudokuSolver {
+    validate(puzzleString) {
+        let regex = /[0-9\.]{81}/g;
 
-  validate(puzzleString) {
-  }
+        if (puzzleString.length != 81) {
+            return {
+                isValid: false,
+                err: "Expected puzzle to be 81 characters long",
+            };
+        }
+        if (!regex.test(puzzleString)) {
+            return {
+                isValid: false,
+                err: "Invalid characters in puzzle",
+            };
+        }
 
-  checkRowPlacement(puzzleString, row, column, value) {
+        return { isValid: true, err: null };
+    }
 
-  }
+    checkRowPlacement(puzzleString, row, column, value) {}
 
-  checkColPlacement(puzzleString, row, column, value) {
+    checkColPlacement(puzzleString, row, column, value) {}
 
-  }
+    checkRegionPlacement(puzzleString, row, column, value) {}
 
-  checkRegionPlacement(puzzleString, row, column, value) {
-
-  }
-
-  solve(puzzleString) {
-    
-  }
+    solve(puzzleString) {
+        let solution = puzzleString;
+        return solution;
+    }
 }
 
 module.exports = SudokuSolver;
-
