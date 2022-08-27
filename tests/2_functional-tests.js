@@ -157,6 +157,25 @@ suite("Functional Tests", () => {
                 });
         });
 
+        test("Check a puzzle placement with all placement conflicts: POST request to /api/check", (done) => {
+            chai
+                .request(server)
+                .post("/api/check")
+                .type("form")
+                .set("content-type", "application/json")
+                .send({
+                    puzzle: puzzleValid,
+                    coordinate: "H1",
+                    value: 1,
+                })
+                .end((err, res) => {
+                    assert.equal(res.status, 200);
+                    assert.isFalse(res.body.valid, "Correct to return False");
+                    assert.equal(res.body.conflict.length, 3);
+                    done();
+                });
+        });
+
         test("Check a puzzle placement with missing required fields: POST request to /api/check", (done) => {
             chai
                 .request(server)
