@@ -118,6 +118,11 @@ class SudokuSolver {
     }
 
     solve(puzzleString) {
+        let puzzleValidation = this.validate(puzzleString);
+        if (!puzzleValidation.isValid) {
+            return { error: puzzleValidation.err };
+        }
+
         let board = [...this.convertToArray(puzzleString)];
 
         // index of 1d array to row and column
